@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 import java.util.Collection;
@@ -30,16 +31,19 @@ public class HelloController {
     @Inject
     private AuthUserService authUserService;
 
-    /**
-     * Print welcome response entity.
-     *
-     * @return the response entity
-     */
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<SimpleResponse> printWelcome() {
+    @RequestMapping(value = { "" }, method = RequestMethod.GET)
+    public ModelAndView homePage(ModelMap model) {
+        return new ModelAndView("home");
+    }
 
-        return new ResponseEntity<>(SimpleResponse.ok("Hello world!"), HttpStatus.OK);
+    @RequestMapping(value = { "products"}, method = RequestMethod.GET)
+    public ModelAndView productsPage(ModelMap model) {
+        return new ModelAndView("products");
+    }
+
+    @RequestMapping(value = { "contactus"}, method = RequestMethod.GET)
+    public ModelAndView contactUsPage(ModelMap model) {
+        return new ModelAndView("contactus");
     }
 
     /**

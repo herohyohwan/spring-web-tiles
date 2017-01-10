@@ -1,6 +1,6 @@
-# spring-web-rest
+# spring-web-tiles
 
-spring mvc, jdk 1.8 simple project
+spring-web-rest + tiles project
 
 This project have simple controller examples 
 
@@ -12,6 +12,7 @@ dependencies :
 - jdk 1.8
 - tomcat 8
 - spring 4.3.5.RELEASE
+- tiles 3
 - logback 1.1.8
 - jackson 2.8.5
 - mybatis 3.4.2

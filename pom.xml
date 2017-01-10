@@ -21,6 +21,7 @@
         <servlet.jsp-api.version>2.3.1</servlet.jsp-api.version>
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <javax.el.version>3.0.0</javax.el.version>
+        <tomcat.version>8.5.9</tomcat.version>
 
         <!-- spring -->
         <spring.version>4.3.5.RELEASE</spring.version>
@@ -53,6 +54,9 @@
         <commons.collections4.version>4.1</commons.collections4.version>
         <lombok.version>1.16.12</lombok.version>
         <google.guava.version>20.0</google.guava.version>
+
+        <!-- tiles -->
+        <apache.tiles.version>3.0.7</apache.tiles.version>
 
         <!-- testing -->
         <junit.version>4.12</junit.version>
@@ -121,13 +125,19 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${javax.servlet.jstl.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <!-- This provided tomcat8 -->
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
             <version>${javax.el.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- This provided tomcat8 -->
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -252,6 +262,28 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${google.guava.version}</version>
+        </dependency>
+
+        <!-- tiles -->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-core</artifactId>
+            <version>${apache.tiles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-api</artifactId>
+            <version>${apache.tiles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-servlet</artifactId>
+            <version>${apache.tiles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>${apache.tiles.version}</version>
         </dependency>
 
         <!-- testing -->

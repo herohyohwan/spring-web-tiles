@@ -50,17 +50,4 @@ public class AppTests {
         this.mockMvc = webAppContextSetup(this.wac).build();
     }
 
-    /**
-     * Simple.
-     *
-     * @throws Exception the exception
-     */
-    @Test
-    public void simple() throws Exception {
-        mockMvc.perform(get("/"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status", is(200)))
-                .andExpect(jsonPath("$.message", is("Hello world!")));
-    }
 }
