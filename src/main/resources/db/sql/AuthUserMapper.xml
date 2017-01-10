@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.service.auth.repository.AuthUserRepository">
+
+    <sql id="authuserColumns">
+        ${alias}.id,
+        ${alias}.name,
+        ${alias}.email,
+        ${alias}.employeeNo,
+        ${alias}.teamName,
+        ${alias}.lastLoginTime
+    </sql>
+
+    <select id="find" resultType="AuthUser">
+        SELECT
+        <include refid="authuserColumns">
+            <property name="alias" value="users"/>
+        </include>
+        FROM
+          auth_users AS users
+        WHERE
+          users.id = #{id}
+    </select>
+
+    <select id="exists" resultType="boolean">
+        SELECT
+          count(*)
+        FROM
+          auth_users
+        WHERE
+          id = #{id}
+    </select>
+    <insert id="create" parameterType="map" >
+        INSERT INTO auth_users(
+            id,
+            name,
+            employeeNo,
+            email,
+            teamName
+        ) VALUES (
+            #{user.id},
+            #{user.name},
+            #{user.employeeNo},
+            #{user.email},
+            #{user.teamName}
+        )
+    </insert>
+
+    <update id="update" parameterType="map">
+        UPDATE
+          auth_users
+        SET
+            name = #{user.name},
+            employeeNo = #{user.employeeNo},
+            email = #{user.email},
+            teamName = #{user.teamName},
+            lastLoginTime = #{user.lastLoginTime}
+        WHERE
+          id = #{user.id}
+    </update>
+
+    <delete id="delete" parameterType="map">
+        DELETE
+        FROM
+          auth_users
+        WHERE
+          id = #{id}
+    </delete>
+
+    <update id="updateLoginTime" parameterType="map">
+        UPDATE
+          auth_users
+        SET
+          lastLoginTime = now()
+        WHERE
+          id = #{id}
+    </update>
+
+    <select id="getAll" resultType="AuthUser">
+        SELECT
+        <include refid="authuserColumns">
+            <property name="alias" value="users"/>
+        </include>
+        FROM
+          auth_users AS users
+        ORDER BY name
+    </select>
+
+    <delete id="deleteAll">
+        DELETE
+        FROM
+        auth_users
+        WHERE
+         1 = 1
+    </delete>
+
+</mapper>
